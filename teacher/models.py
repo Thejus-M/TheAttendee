@@ -6,9 +6,22 @@ class student(models.Model):
     name = models.CharField(max_length=20)
     class_section = models.CharField(max_length=10)
 
+    
+class Class(models.Model):
+    classname = models.CharField(max_length=10,primary_key=True)
+    student = models.ManyToManyField(student)
+    def name(self):
+        return self.student.name
+    
+    def __str__(self):
+        return f'{self.classname}'
+    
 class Attendant(models.Model):
-    student = models.ForeignKey(student, on_delete=models.CASCADE)
-    attendants = models.BooleanField()
+    student = models.ForeignKey(student, on_delete=models.DO_NOTHING)
+    attendants = models.BooleanField(default=False)
     subject = models.CharField(max_length=10)
     period_no = models.IntegerField()
     time = models.DateTimeField(auto_now=True)
+    
+    def name(self):
+        return self.student.name
