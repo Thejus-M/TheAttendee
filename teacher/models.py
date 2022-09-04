@@ -7,7 +7,7 @@ class student(models.Model):
     class_section = models.CharField(max_length=10)
 
     
-class Class(models.Model):
+class Classe(models.Model):
     classname = models.CharField(max_length=10,primary_key=True)
     student = models.ManyToManyField(student)
     def name(self):
