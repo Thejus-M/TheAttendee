@@ -6,8 +6,10 @@ class student(models.Model):
     name = models.CharField(max_length=20)
     class_section = models.CharField(max_length=10)
 
-    
-class Classe(models.Model):
+class Class(models.Model):
+    class Meta:
+        verbose_name = "class" 
+        verbose_name_plural = "classes" 
     classname = models.CharField(max_length=10,primary_key=True)
     student = models.ManyToManyField(student)
     def name(self):

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Present
+        </th>
+        <th>
+            Subject
+        </th>
+        <th>
+            period_no
+        </th>
+    </tr>
+    {% for attend in attendants %}
+    <tr>
+        <th>
+            <a href="#">
+
+                {{ attend.name }}
+            </a>
+        </th>
+        <th>
+            {% if attend.attendance == 'yes' %}
+            present
+            {% endif %}
+            <div class="checkbox-row">
+                <label class="vCheckboxLabel" for="id_attendants">
+                    Attendants
+                </label>
+                <input type="checkbox" name="attendants" id="id_attendants" value="True" />
+            </div>
+            <!-- absent -->
+
+            <a>
+                {{ attend.attendance }}
+            </a>
+        </th>
+        <th>
+            {{ attend.subject }}
+        </th>
+        <th>
+            {{ attend.period_no }}
+        </th>
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock contents %}
